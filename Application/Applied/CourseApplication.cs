@@ -5,6 +5,7 @@ using asp.Application.Interface;
 using asp.Model;
 using asp.Data;
 using asp.Infrastructure.Interface;
+using System.Threading.Tasks;
 
 public class CourseApplication : ICourse
 {
@@ -37,9 +38,18 @@ public class CourseApplication : ICourse
     }
 
    
-
-    public string Update(int id)
+    public async Task UpdateCourse(Course course, int id)
     {
-        throw new NotImplementedException();
+          var courseTo = _iCourseRepository.GetById(id);
+            // if(o == null) 
+            // {
+                
+            // }
+           // var newo = student.MapToModel(o);
+        courseTo.Name = course.Name;
+        courseTo.Description = course.Description;
+        courseTo.CreditHour = course.CreditHour;
+            
+        _iCourseRepository.Update(courseTo);
     }
 }

@@ -10,5 +10,5 @@ public interface ICourse
 
     string Delete(int id);
 
-    string Update(int id);
+    Task UpdateCourse(Course course, int id);
 }

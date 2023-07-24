@@ -45,6 +45,12 @@ public class CourseController : ControllerBase
         return _iCourse.Delete(id);
     }
 
+    [HttpPut("{id}")]
+    public async Task<ActionResult> UpdateCourse(Course course,int id)
+    {
+       await _iCourse.UpdateCourse(course,id);
+        return NoContent();
+    }
     //  [HttpPut("{id}")]
     // public string UpdateCourse(Course courses,int id)
     // {
