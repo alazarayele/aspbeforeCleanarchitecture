@@ -12,5 +12,5 @@ public interface ICapitalCity
 
     string Delete(int id);
 
-    string Update(int id);
+    CapitalCity Update(CapitalCity capitalCity,int id);
 }

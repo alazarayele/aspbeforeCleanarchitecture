@@ -35,8 +35,13 @@ public class CapitalCityApplication : ICapitalCity
         return _iCity.GetById(id);
     }
 
-    public string Update(int id)
+    public CapitalCity Update(CapitalCity capitalCity,int id)
     {
-        throw new NotImplementedException();
+        var capitalCityTo = GetById(id);
+
+        capitalCityTo.CountryName = capitalCity.CountryName;
+        capitalCityTo.NumberOfPopulation = capitalCity.NumberOfPopulation;
+
+       return _iCity.Update(capitalCityTo);
     }
 }

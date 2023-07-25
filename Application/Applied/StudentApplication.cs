@@ -39,7 +39,7 @@ public class StudentApplication : IStudent
         studentTo.Name = student.Name;
         studentTo.Gender = student.Gender;
             
-        _iStudentRepository.Update(studentTo);
+         _iStudentRepository.Update(studentTo);
       
     }
    
