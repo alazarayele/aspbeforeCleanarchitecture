@@ -36,8 +36,13 @@ public class EmployeeApplication : IEmployee
         return _iEmployeeRepository.GetById(id);
     }
 
-    public string Update(Employee employee)
+    public Employee Update(Employee employee, int id)
     {
-        throw new NotImplementedException();
+       var EmployeeTo = GetById(id);
+       EmployeeTo.FirstName=employee.FirstName;
+       EmployeeTo.LastName=employee.LastName;
+       EmployeeTo.Salary=employee.Salary;
+
+       return _iEmployeeRepository.Update(EmployeeTo);
     }
 }

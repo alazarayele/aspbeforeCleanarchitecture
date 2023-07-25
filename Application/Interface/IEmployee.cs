@@ -11,5 +11,5 @@ public interface IEmployee
 
     string Delete(int id);
 
-    string Update(Employee employee);
+    Employee Update (Employee employee,int id);
 }

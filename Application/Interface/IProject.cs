@@ -13,5 +13,5 @@ public interface IProject
 
     string Delete(int id);
 
-    string Update(Project project);
+    Task Update(Project project,int id);
 }

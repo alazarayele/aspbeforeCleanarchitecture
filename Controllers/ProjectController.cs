@@ -99,4 +99,11 @@ public class ProjectController : ControllerBase
         
        return _iProject.Delete(id);
     }
+
+    [HttpPut("{id}")]
+    public async Task Update (Project project,int id)
+    {
+       await _iProject.Update(project,id);
+
+    }
 }

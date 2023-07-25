@@ -10,5 +10,5 @@ public interface ICountry
 
     string Delete(int id);
 
-    string Update(int id);
+    Task Update(Country country,int id);
 }

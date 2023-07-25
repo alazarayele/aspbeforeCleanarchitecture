@@ -102,4 +102,11 @@ public class EmployeeController : ControllerBase
         return _iEmployee.Delete(id);
     }
 
+    [HttpPut("{id}")]
+    public async Task Update(Employee employee,int id)
+    {
+        _iEmployee.Update(employee,id);
+        
+    }
+
 }

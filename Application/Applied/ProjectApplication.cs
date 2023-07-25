@@ -35,8 +35,15 @@ public class ProjectApplication : IProject
         return _iProjectRepository.GetById(id);
     }
 
-    public string Update(Project project)
+    public async Task Update(Project project,int id)
     {
-        throw new NotImplementedException();
+        var projectTo=GetById(id);
+
+        projectTo.Name=project.Name;
+        projectTo.Station=project.Station;
+
+
+        _iProjectRepository.Update(projectTo);
+
     }
 }

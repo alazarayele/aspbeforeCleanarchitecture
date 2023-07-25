@@ -33,8 +33,14 @@ public class CountryApplication : ICountry
         return _iCountryRepository.GetById(id);
     }
 
-    public string Update(int id)
-    {
-        throw new NotImplementedException();
-    }
+   public async Task Update(Country country,int id)
+   {
+        var countryTo = GetById(id);
+
+        countryTo.Name=country.Name;
+        countryTo.Population=country.Population;
+        countryTo.continent=country.continent;
+
+        _iCountryRepository.Update(countryTo);
+   }
 }

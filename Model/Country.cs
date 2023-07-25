@@ -7,5 +7,6 @@ public class Country : BaseModel
     public int Population {get;set;}
     public int continent {get;set;}
     public CapitalCity CapitalCity{get;set;}  //Refernce Navigation
+    
 
 }

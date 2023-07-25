@@ -96,4 +96,11 @@ public class CountryControllers : ControllerBase
     {
         return _iCountry.Add(country);
     }
+
+    [HttpPut("{id}")]
+    public async Task<ActionResult>Update(Country country,int id)
+    {
+       await _iCountry.Update(country,id);
+        return NoContent();
+    }
 }
