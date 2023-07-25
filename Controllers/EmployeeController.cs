@@ -103,10 +103,11 @@ public class EmployeeController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public async Task Update(Employee employee,int id)
+    public async Task<ActionResult> Update(Employee employee,int id)
     {
-        _iEmployee.Update(employee,id);
+         _iEmployee.Update(employee,id);
         
+        return Ok();
     }
 
 }
