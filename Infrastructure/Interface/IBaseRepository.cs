@@ -14,3 +14,6 @@ public interface IBaseRepository<T> where T:BaseModel
 
     T Update(T t);
 }
+
+
+
