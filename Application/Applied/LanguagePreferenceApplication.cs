@@ -8,16 +8,24 @@ using System.Collections.Generic;
 
 public class LanguagePreferenceApplication : ILanguagePreference
 {
-    private readonly ILanguage _ilanguage;
+    private readonly Infrastructure.Interface.ILanguage _ilanguage;
 
-    public LanguagePreferenceApplication(ILanguage ilanguage)
+
+
+    public LanguagePreferenceApplication(Infrastructure.Interface.ILanguage ilanguage)
     {
         _ilanguage = ilanguage;
     }
+  
 
-      public IReadOnlyList<LanguagePreference> GetAll()
+      public IEnumerable<LanguagePreference> GetByProficiency(string desiredProficiency)
+        {
+            return _ilanguage.GetByProficiency(desiredProficiency);
+        }
+      public IReadOnlyList<LanguagePreference> GetAll(int id)
     {
         return _ilanguage.GetAll();
+        
     }
 
     

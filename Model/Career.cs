@@ -4,7 +4,7 @@ public class Career : BaseModel
 {
 
     public int type {get;set;}
-    public int person {get;set;}
+    public int Careerperson {get;set;}
     public int index {get;set;}
     public string organization {get;set;}
     public int field {get;set;}

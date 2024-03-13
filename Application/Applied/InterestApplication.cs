@@ -14,18 +14,14 @@ public class InterestApplication : IInterest
     {
         _interest = interest;
     }
-
      public IReadOnlyList<Interest> GetAll()
     {
         return _interest.GetAll();
     }
-    
-
     public Interest GetById(int id)
     {
         return _interest.GetById(id);
     }
-
     public string Add(Interest interest)
     {
         return _interest.Add(interest);
@@ -35,13 +31,11 @@ public class InterestApplication : IInterest
         var interestT = GetById(id);
         return _interest.Delete(interestT);
     }
-
     public Interest Update(Interest interest, int id)
     {
 
         var interestTo = GetById(id);
         interestTo.Name = interest.Name;
-      
         return _interest.Update(interestTo);
     }
 

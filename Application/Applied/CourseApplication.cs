@@ -14,11 +14,11 @@ public class CourseApplication : ICourse
 
     public CourseApplication(ICourseRepository iCourseRepository)
     {
-        _iCourseRepository=iCourseRepository;
+        _iCourseRepository = iCourseRepository;
     }
     public string Add(Course course)
     {
-       return _iCourseRepository.Add(course);
+        return _iCourseRepository.Add(course);
     }
 
     public string Delete(int id)
@@ -37,19 +37,19 @@ public class CourseApplication : ICourse
         return _iCourseRepository.GetById(id);
     }
 
-   
+
     public async Task UpdateCourse(Course course, int id)
     {
-          var courseTo = _iCourseRepository.GetById(id);
-            // if(o == null) 
-            // {
-                
-            // }
-           // var newo = student.MapToModel(o);
+        var courseTo = _iCourseRepository.GetById(id);
+        // if(o == null) 
+        // {
+
+        // }
+        // var newo = student.MapToModel(o);
         courseTo.Name = course.Name;
         courseTo.Description = course.Description;
         courseTo.CreditHour = course.CreditHour;
-            
+
         _iCourseRepository.Update(courseTo);
     }
 }

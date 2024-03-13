@@ -14,13 +14,23 @@ public class LanguagePreferenceRepository : BaseRepository<LanguagePreference>, 
         _aspContext = aspConteext;
     }
 
-    public override IReadOnlyList<LanguagePreference> GetAll()
+    public IEnumerable<LanguagePreference> GetByProficiency(string desiredProficiency)
+    {
+        return _aspContext.LanguagePreferences
+            .Include(lp => lp.Language)
+            .Where(lp => lp.Proficiency.Level == desiredProficiency)
+            .ToList();
+    }
+    
+
+    /*public override IReadOnlyList<LanguagePreference> GetAll()
     {
         return _aspContext.LanguagePreferences
         .Include(y => y.Person)
         .Include(Z => Z.Language)
         .Include(X=>X.proficiency)
         .ToList();
-    }
+        
+    }*/
 
 }

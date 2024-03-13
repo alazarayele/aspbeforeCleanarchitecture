@@ -38,7 +38,7 @@ public class CommunicationSourceApplication : ICommunicationSources
     {
         var communicationSource1 = GetById(id);
         communicationSource1.code = communicationSource.code;
-        communicationSource1.person = communicationSource.person;
+        communicationSource1.CommunicationSourceperson = communicationSource.CommunicationSourceperson;
         communicationSource1.type = communicationSource.type;
         communicationSource1.communicatedBy = communicationSource.communicatedBy;
         communicationSource1.remark = communicationSource.remark;

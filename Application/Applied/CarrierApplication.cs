@@ -39,7 +39,7 @@ public class CarrierApplication : Icarrier
     {
         var careerTo = GetById(id);
         careerTo.type = career.type;
-        careerTo.person = career.person;
+        careerTo.Careerperson = career.Careerperson;
         careerTo.index = career.index;
         careerTo.organization = career.organization;
         careerTo.field = career.field;

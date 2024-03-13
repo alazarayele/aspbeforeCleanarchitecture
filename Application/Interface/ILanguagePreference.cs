@@ -4,8 +4,9 @@ using asp.Model;
 public interface ILanguagePreference
 
 {
-    IReadOnlyList<LanguagePreference> GetAll();
-
+    IReadOnlyList<LanguagePreference> GetAll(int id);
+    
+    IEnumerable<LanguagePreference> GetByProficiency(string desiredProficiency);
     LanguagePreference GetById(int id);
 
     string Add(LanguagePreference languagePreference);

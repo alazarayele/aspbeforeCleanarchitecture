@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using asp.Data;
 
@@ -11,9 +12,11 @@ using asp.Data;
 namespace asp.Migrations
 {
     [DbContext(typeof(AspContext))]
-    partial class AspContextModelSnapshot : ModelSnapshot
+    [Migration("20240304100312_yourMigrationName")]
+    partial class yourMigrationName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -165,9 +168,6 @@ namespace asp.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CommunicationSourceperson")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("CretaedDate")
                         .HasColumnType("datetime2");
 
@@ -182,6 +182,9 @@ namespace asp.Migrations
 
                     b.Property<string>("communicatedBy")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("person")
+                        .HasColumnType("int");
 
                     b.Property<string>("remark")
                         .HasColumnType("nvarchar(max)");
