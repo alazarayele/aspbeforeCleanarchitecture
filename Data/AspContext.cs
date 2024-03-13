@@ -1,9 +1,11 @@
 using asp.Model;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace asp.Data;
 
-public class AspContext : DbContext
+public class AspContext : IdentityDbContext<IdentityUser>
 {
 
     public DbSet<Attachment> Attachments { get; set; }

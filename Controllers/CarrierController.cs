@@ -1,5 +1,6 @@
 
 using asp.Application.Interface;
+using asp.Authenticaion;
 using asp.Model;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,7 +9,6 @@ namespace asp.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-
 public class CarrierController : ControllerBase
 
 {
