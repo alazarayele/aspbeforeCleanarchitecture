@@ -17,19 +17,9 @@ public class AspContext : IdentityDbContext<IdentityUser>
     public DbSet<LanguagePreference> LanguagePreferences { get; set; }
     public DbSet<Person> Persons { get; set; }
     public DbSet<Proficiency> Proficiencies { get; set; }
-    public DbSet<Student> Students { get; set; }
+   
 
-    public DbSet<Course> Courses { get; set; }
-
-    public DbSet<Country> Countries { get; set; }
-
-    public DbSet<CapitalCity> CapitalCities { get; set; }
-
-    public DbSet<Employee> Employees { get; set; }
-
-    public DbSet<Project> Projects { get; set; }
-
-    public DbSet<EmployeeProject> EmployeeProjects { get; set; }
+    
     public AspContext(DbContextOptions<AspContext> dbContextOptions) : base(dbContextOptions) { }
 
 
@@ -37,20 +27,7 @@ public class AspContext : IdentityDbContext<IdentityUser>
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
-        modelBuilder.Entity<Student>(x => x.HasMany(y => y.Courses).WithOne(z => z.Student).HasForeignKey(c => c.StudentId));
-
-        modelBuilder.Entity<EmployeeProject>()
-        .HasKey(ep => new { ep.EmployeeId, ep.ProjectId });
-
-        modelBuilder.Entity<EmployeeProject>()
-           .HasOne(ep => ep.Employee)
-           .WithMany(e => e.EmployeeProjects)
-           .HasForeignKey(ep => ep.EmployeeId);
-
-        modelBuilder.Entity<EmployeeProject>()
-            .HasOne(ep => ep.Project)
-            .WithMany(e => e.EmployeeProjects)
-            .HasForeignKey(ep => ep.ProjectId);
+       
 
 
         modelBuilder.Entity<Attachment>()
