@@ -10,6 +10,10 @@ public interface IAttachments
 
     string Add(Attachment attachment);
 
+  
+    Task<string> CreateAttachmentWithPerson(int personId, Attachment attachment);
+         
+
     string Delete(int id);
 
     Attachment Update(Attachment attachment,int id);

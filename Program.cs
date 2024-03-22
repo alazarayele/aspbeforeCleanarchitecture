@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Identity;
 
 
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using asp.Authenticaion;
+
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -66,11 +66,9 @@ builder.Services.AddDbContext<AspContext>(dbcontext =>
     
 });
 
-
+builder.Configuration.AddJsonFile("appsettings.json");
+IConfiguration Configuration = builder.Configuration;
            
-
-IConfiguration Configuration = builder.Services.BuildServiceProvider().GetRequiredService<IConfiguration>();
-
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 .AddJwtBearer(x =>
 {
@@ -117,7 +115,6 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddScoped<AuthenticationFilter>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

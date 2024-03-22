@@ -21,5 +21,14 @@ public class AttachmentRepository : BaseRepository<Attachment>, IAttachment
         .Include(Z => Z.Career)
         .ToList();
     }
+         public async Task<Person> GetPersonByIdAsync(int personId)
+        {
+            return await _aspContext.Persons.FirstOrDefaultAsync(p => p.Id == personId);
+        }
+
+        public async Task<int> SaveChangesAsync()
+        {
+            return await _aspContext.SaveChangesAsync();
+        }
 
 }

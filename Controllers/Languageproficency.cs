@@ -1,6 +1,6 @@
 using asp.Application.Interface;
-using asp.Authenticaion;
 using asp.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace asp.Controllers;
@@ -8,6 +8,7 @@ namespace asp.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize]
 
 public class Languageproficency : ControllerBase
 {

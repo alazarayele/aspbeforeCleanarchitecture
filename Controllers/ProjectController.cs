@@ -2,10 +2,11 @@ using asp.Data;
 using asp.Model;
 using asp.Application.Interface;
 using Microsoft.AspNetCore.Mvc;
-using asp.Authenticaion;
+using Microsoft.AspNetCore.Authorization;
+
 
 namespace asp.Controllers;
-
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class ProjectController : ControllerBase

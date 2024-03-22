@@ -1,6 +1,10 @@
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 using asp.Model;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 
 namespace asp.Controllers;
 
@@ -12,12 +16,14 @@ public class AccountController : ControllerBase
 {
     private readonly UserManager<IdentityUser> _userManager;
     private readonly SignInManager<IdentityUser> _signInManager;
+    private readonly IConfiguration _configuration;
 
 
-    public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+    public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager,IConfiguration configuration)
     {
         _userManager = userManager;
         _signInManager = signInManager;
+        _configuration = configuration;
     }
 
     [HttpPost]
@@ -50,7 +56,8 @@ public class AccountController : ControllerBase
             var result = await _signInManager.PasswordSignInAsync(login.Email, login.Password, login.RememberMe, lockoutOnFailure: false);
             if (result.Succeeded)
             {
-                return Ok("Login successful");
+                var token = Generate(login);
+                return Ok(token );
             }
             if (result.IsLockedOut)
             {
@@ -71,5 +78,24 @@ public class AccountController : ControllerBase
           return Unauthorized("Invalid login attempt");
         }
         return BadRequest(ModelState);
+    }
+
+    private string Generate(Login login)
+    {
+        var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
+        var credentials  = new SigningCredentials(securityKey,SecurityAlgorithms.HmacSha256);
+
+        var Claims = new[]
+        {
+             new Claim(ClaimTypes.Email,login.Email)
+             
+        };
+        var token = new JwtSecurityToken(_configuration["Jwt:Issuer"],
+        _configuration["Jwt:Audience"],
+        Claims,
+        expires:DateTime.Now.AddMinutes(15),
+        signingCredentials : credentials
+        );
+        return new JwtSecurityTokenHandler().WriteToken(token);
     }
 }

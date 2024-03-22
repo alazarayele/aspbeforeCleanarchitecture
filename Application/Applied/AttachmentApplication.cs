@@ -14,11 +14,29 @@ public class AttachmentApplication: IAttachments
     {
         _iattachemnt=iattachemnt;
     }
+
+    
     public string Add(Attachment attachment)
     {
         return _iattachemnt.Add(attachment);
     }
 
+
+     
+       public async Task<string> CreateAttachmentWithPerson(int personId, Attachment attachment)
+        {
+            var person = await _iattachemnt.GetPersonByIdAsync(personId);
+            if (person == null)
+            {
+                return "Person not found.";
+            }
+
+            attachment.PersonId = personId;
+            _iattachemnt.Add(attachment);
+            await _iattachemnt.SaveChangesAsync();
+
+            return "Attachment created successfully.";
+        }
     public string Delete(int id)
     {
        var attachemnt = GetById(id);

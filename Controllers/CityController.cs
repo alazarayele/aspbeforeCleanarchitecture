@@ -3,11 +3,13 @@ using asp.Data;
 using asp.Model;
 using Microsoft.EntityFrameworkCore;
 using asp.Application.Interface;
+using Microsoft.AspNetCore.Authorization;
 
 namespace asp.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize]
 public class CityCountroller : ControllerBase
 {
     // private readonly AspContext _aspContext;

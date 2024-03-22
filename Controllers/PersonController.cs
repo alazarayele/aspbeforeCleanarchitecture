@@ -1,12 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
 using asp.Application.Interface;
 using asp.Model;
-using asp.Authenticaion;
+using Microsoft.AspNetCore.Authorization;
+
 namespace asp.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-
+[Authorize]
 public class PersonController : ControllerBase
 {
     private readonly IPersons _persons;

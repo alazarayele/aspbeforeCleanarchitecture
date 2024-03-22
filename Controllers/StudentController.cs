@@ -4,9 +4,10 @@ using asp.Infrastructure.Interface;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using asp.Application.Interface;
+using Microsoft.AspNetCore.Authorization;
 
 namespace asp.Controllers;
-
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 
